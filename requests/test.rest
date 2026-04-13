@@ -1,0 +1,34 @@
+GET http://localhost:3001/api/task/
+
+###
+DELETE  http://localhost:3001/api/task/2
+
+
+###
+GET http://localhost:3001/api/task/1
+
+###
+POST http://localhost:3001/api/task/
+Content-Type: application/json
+
+{
+  "task": "Watch"
+}
+
+###
+POST http://localhost:3001/api/task/
+Content-Type: application/json
+
+{
+  "task": "Eat"
+}
+
+###
+POST http://localhost:3001/api/task/
+Content-Type: application/json
+
+{
+  "task": "Bath"
+}
+
+
