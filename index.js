@@ -42,12 +42,32 @@ app.post('/api/task', (req, res, next) => {
   }
 
   const newTask = new Task({
-    task: taskObject.task
+    task: taskObject.task,
+    priority: taskObject.priority
   })
 
   newTask.save()
     .then(task => {
       res.json(task)
+    })
+    .catch(error => next(error))
+})
+
+app.put('/api/task/:id', (req, res, next) => {
+  const { task, priority } = req.body
+
+  Task.findById(req.params.id)
+    .then(updateTask => {
+      if(!updateTask) {
+        return res.status(404).end()
+      }
+      updateTask.task = task,
+      updateTask.priority = priority
+
+      return updateTask.save()
+        .then(updated => {
+          res.json(updated)
+        })
     })
     .catch(error => next(error))
 })
