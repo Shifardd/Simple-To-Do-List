@@ -16,9 +16,10 @@ const taskSchema = new mongoose.Schema({
   task: {
     type: String,
     minLength: 3,
-    maxLength: 25,
+    maxLength: 20,
     required: true
-  }
+  },
+  priority: Boolean
 })
 
 taskSchema.set('toJSON', {
